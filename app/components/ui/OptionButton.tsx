@@ -2,7 +2,7 @@ import React from 'react'
 import { useCallback } from 'react'
 import { OptionButtonProps } from '@/app/types'
 
-const alphabet = [
+const alphabet: string[] = [
     'A',
     'B',
     'C',
@@ -39,7 +39,7 @@ const OptionButton: React.FC<OptionButtonProps> = ({
     index,
 }) => {
     const getButtonClass = useCallback(
-        (index: number) => `
+        (index: number): string => `
         relative transition cursor-pointer px-[32px] py-[20] border rounded-xl max-md:px-[24px] max-md:py-[20px] 
         before:w-[17px] before:h-[1px] before:absolute  before:top-[50%] before:left-[-17px]
         after:w-[17px] after:h-[1px] after:absolute  after:top-[50%] after:right-[-17px]

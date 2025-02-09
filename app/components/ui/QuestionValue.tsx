@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useCallback } from 'react'
 import { QuestionValueProps } from '@/app/types'
 
@@ -6,17 +8,18 @@ const QuestionValue: React.FC<QuestionValueProps> = ({
     questions,
     questionIndex,
 }) => {
-    function numberWithCommas(x) {
+    function numberWithCommas(x: string | number) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
     }
 
-    const getValueClass = useCallback(() => {
-        const currentId = questions[questionIndex]?.id
-        const questionId = question.id
-        const isActive = currentId === questionId
-        const isBefore =
+    const getValueClass = useCallback((): string => {
+        const currentId: string | number | undefined =
+            questions[questionIndex]?.id
+        const questionId: string | number = question.id
+        const isActive: boolean = currentId === questionId
+        const isBefore: boolean =
             questions.findIndex((q) => q.id === questionId) < questionIndex
-        const isAfter =
+        const isAfter: boolean =
             questions.findIndex((q) => q.id === questionId) > questionIndex
 
         return `

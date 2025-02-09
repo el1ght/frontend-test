@@ -5,13 +5,13 @@ import Button from '../components/ui/Button'
 import Image from 'next/image'
 
 const GameOver: React.FC = () => {
-    const [award, setAward] = useState(0)
+    const [award, setAward] = useState<number>(0)
 
     useEffect(() => {
-        const storedAward = sessionStorage.getItem('totalAward')
-        if (storedAward) {
-            setAward(parseInt(storedAward))
-        }
+        const storedAward: string | null = sessionStorage.getItem('totalAward')
+        const numericAward: number =
+            storedAward !== null ? parseInt(storedAward, 10) : 0
+        setAward(Number.isNaN(numericAward) ? 0 : numericAward)
     }, [])
 
     return (
